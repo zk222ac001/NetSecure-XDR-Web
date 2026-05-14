@@ -1,34 +1,25 @@
-import { Line } from "react-chartjs-2";
+import { useEffect, useState } from "react";
+import StatCard from "../components/StatCard";
 
-function Dashboard() {
+export default function Dashboard() {
+    const [data, setData] = useState({});
 
-    const data = {
-
-        labels: ["Mon", "Tue", "Wed", "Thu"],
-
-        datasets: [
-
-            {
-
-                label: "Traffic",
-
-                data: [12, 19, 7, 25],
-
-                borderColor: "#00ff99"
-            }
-        ]
-    };
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/stats")
+            .then(res => res.json())
+            .then(setData);
+    }, []);
 
     return (
+        <div>
+            <h1>Dashboard</h1>
 
-        <div className="container">
-
-            <h1>NetSecure XDR</h1>
-
-            <Line data={data} />
-
+            <div className="grid">
+                <StatCard title="Alerts" value={data.alerts} />
+                <StatCard title="Devices" value={data.devices} />
+                <StatCard title="Threats" value={data.threats} />
+                <StatCard title="Vulnerabilities" value={data.vulnerabilities} />
+            </div>
         </div>
     );
 }
-
-export default Dashboard;
