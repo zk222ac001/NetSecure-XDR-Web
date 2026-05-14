@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+jinja2
+sqlalchemy
+psycopg2-binary
+python-jose
+passlib
+python-multipart
+aiofiles
+websockets
+scapy
+pyshark
+requests
+pandas
+plotly

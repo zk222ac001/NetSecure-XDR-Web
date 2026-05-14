@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4">Security Operations Center</h1>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card stat-card red">
+            <h2 id="alerts">154</h2>
+            <p>Alerts</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card stat-card blue">
+            <h2 id="devices">287</h2>
+            <p>Devices</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card stat-card yellow">
+            <h2 id="vulns">32</h2>
+            <p>Vulnerabilities</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card stat-card green">
+            <h2 id="threats">8</h2>
+            <p>Critical Threats</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-8">
+
+        <div class="card bg-dark p-3">
+
+            <canvas id="trafficChart"></canvas>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card bg-dark p-3">
+
+            <h4>Live Threat Feed</h4>
+
+            <ul id="live-alerts">
+
+                <li class="text-danger">
+                    Malware beacon detected
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const ctx = document.getElementById('trafficChart');
+
+new Chart(ctx, {
+
+    type: 'line',
+
+    data: {
+
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+
+        datasets: [{
+
+            label: 'Traffic',
+
+            data: [12, 18, 9, 22, 30],
+
+            borderColor: '#00ff99',
+
+            tension: 0.4
+        }]
+    }
+});
+
+</script>
+
+{% endblock %}
